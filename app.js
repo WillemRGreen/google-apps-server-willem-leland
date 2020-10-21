@@ -38,8 +38,8 @@ app.get('/apps', (req, res) => {
                 .send('Genres must be Action, Puzzle, Strategy, Casual, Arcade, or Card')
         }
         results = results.filter(app => {
-                app.Genres.toLowerCase().includes(app[sort].toLowerCase());
-            })
+                return app.Genres.toLowerCase().includes(genres.toLowerCase());
+        })
     }
 
     res.json(results);
@@ -48,3 +48,5 @@ app.get('/apps', (req, res) => {
 app.listen(8000, () => {
     console.log('Server started on port 8000')
 })
+
+module.exports = app;
